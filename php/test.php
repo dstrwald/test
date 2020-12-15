@@ -1,5 +1,5 @@
 <?php
-	$servername = "localhost";
+	$servername = "test.andre-spinnler.de";
 	$username = "test";
 	$password = "#anpisp@TEST42.01";
 	$dbname = "test";
@@ -16,7 +16,7 @@ $result = $conn->query($sql);
 
 if ($result->num_rows > 0) {
     while($row = $result->fetch_assoc()) {
-		echo $row;
+		print_r($row);
     }
 }
 else {
