@@ -6,11 +6,11 @@
 	$conn = new mysqli($servername, $username, $password, $dbname);
 
 	if(!($stmt=$conn->prepare("SELECT * FROM test t"))){
-		header("HTTP/1.0 500 Internal DB error");
+		header("HTTP/1.0 500 Internal DB query error");
 	};
 	
 	if ($conn->connect_error) {
-		header("HTTP/1.0 500 Internal DB error");
+		header("HTTP/1.0 500 Internal DB con error");
 	}
 	
 	if (!($stmt->execute())) {
