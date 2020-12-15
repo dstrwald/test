@@ -1,5 +1,5 @@
 <?php
-	$servername = "87.106.126.123:3306";
+	$servername = "localhost:3306";
 	$username = "test";
 	$password = "#anpisp@TEST42.01";
 	$dbname = "test";
