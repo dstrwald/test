@@ -5,25 +5,24 @@
 	$dbname = "test";
 	$conn = new mysqli($servername, $username, $password, $dbname);
 
-	if(!($stmt=$conn->prepare("SELECT * FROM test t"))){
-		echo "Query";
-		header("HTTP/1.0 500 Internal DB error");
-	};
-	
-	if ($conn->connect_error) {
-		echo "Con!";
-		header("HTTP/1.0 500 Internal DB error");
-	}
-	
-	if (!($stmt->execute())) {
-		header("HTTP/1.0 500:".$sql."<br>".$conn->error);
-	}
-	$stmt->store_result();
-	$stmt->bind_result($row);
+if ($conn->connect_error) {
+    die("Connection failed: " . $conn->connect_error);
+} 
 
-	while($stmt->fetch()){
-		echo "Hallo: ".$row;
-	}
 
-	$conn->close();
+$sql = "SELECT * FROM test";
+
+$result = $conn->query($sql);
+
+if ($result->num_rows > 0) {
+    while($row = $result->fetch_assoc()) {
+		echo $row;
+    }
+}
+else {
+	echo "0 results";
+}
+
+
+$conn->close();
 ?>
